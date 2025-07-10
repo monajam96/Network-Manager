@@ -29,12 +29,9 @@ class NetworkManager {
     const response = await fetch(fullUrl, fetchOptions)
 
     if (!response.ok) {
-      const error = await response.json().catch(() => ({
-        message :response.statusText,
-
-      }))
-
-      throw new Error(error.message)
+      const errorBody = await response.json().catch(() => ({}))
+      const errorMessage = errorBody.message || response.statusText
+      throw new Error(errorMessage)
     }
 
     return response.json()
@@ -44,10 +41,7 @@ class NetworkManager {
     return this.request<TResponse>({ method: 'GET', path })
   }
 
-  post<TResponse = unknown, TBody = unknown>(
-    path: string,
-    body: TBody,
-  ) {
+  post<TResponse = unknown, TBody = unknown>(path: string, body: TBody) {
     return this.request<TResponse, TBody>({ method: 'POST', path, body })
   }
 }

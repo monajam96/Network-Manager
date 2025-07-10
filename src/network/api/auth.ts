@@ -3,7 +3,6 @@ import NetworkManager from '../networkManager'
 interface LoginPayload {
   username: string
   password: string
-  expiresInMins?: number // optional if you want to support it
 }
 
 interface LoginResponse {

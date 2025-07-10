@@ -29,8 +29,7 @@ async function handleSubmit() {
       password: 'emilyspass',
     })
 
-    console.log('✅ Login successful',res)
-    // مثلاً برو به داشبورد یا صفحه‌ی اصلی
+    console.log('✅ Login successful', res)
     // router.push('/dashboard')
   } catch (err) {
     console.error('❌ Login failed', err)
