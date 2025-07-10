@@ -41,7 +41,6 @@
         </div>
       </form>
 
-      <!-- Optional links below form -->
       <div
         class="flex flex-col items-center justify-center w-[304px] h-[80px] border border-gray-200 rounded-lg shadow-sm text-black">
         <a class="hover:underline text-blue-700">Sign in with a passkey</a>

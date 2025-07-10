@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="handleSubmit"
-    class="min-w-[290px] bg-[#F6F8FA] border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col justify-center">
+    class="min-w-[290px] bg-[#F6F8FA] border border-gray-200 rounded-lg p-6 flex flex-col justify-center">
     <div class="grid gap-6">
-      <BaseInput id="email" type="email" label="Username or email address" v-model="email" />
+      <BaseInput id="username" type="username" label="Username or email address" v-model="username" />
 
       <BaseInput id="password" type="password" label="Password" hint="forget password?" v-model="password" />
 
@@ -19,18 +19,19 @@ import { login } from '../../network/api/auth'
 import BaseInput from './baseInput.vue'
 import BaseButton from './baseButton.vue'
 
-const email = ref('')
+const username = ref('')
 const password = ref('')
 
 async function handleSubmit() {
   try {
     const res = await login({
-      email: email.value,
-      password: password.value,
+      username: 'emilys',
+      password: 'emilyspass',
     })
 
-    localStorage.setItem('token', res.token)
-    console.log('✅ Login successful')
+    console.log('✅ Login successful',res)
+    // مثلاً برو به داشبورد یا صفحه‌ی اصلی
+    // router.push('/dashboard')
   } catch (err) {
     console.error('❌ Login failed', err)
     alert((err as { message: string }).message)
